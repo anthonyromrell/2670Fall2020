@@ -339,12 +339,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add91726641d144ca81f7778178a9417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 3
-  moveSpeed: 3
+  gravity: -9.81
+  moveSpeed: 12
   fastMoveSpeed: 0
-  jumpForce: 50
-  jumpCountMax: 0
-  rotateSpeed: 30
+  jumpForce: 0.5
+  jumpCountMax: 2
+  jumpCount: 0
+  rotateSpeed: 50
 --- !u!143 &1172660278
 CharacterController:
   m_ObjectHideFlags: 0
@@ -418,7 +419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172660276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.96, y: 2.41, z: 0}
+  m_LocalPosition: {x: -2.96, y: 3.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
