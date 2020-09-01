@@ -22,29 +22,11 @@ public class CharacterMover : MonoBehaviour
     
     void Update()
     {
-        transform.Rotate(rotateMovement);
-        movement.x = moveSpeed;
-
-        if (Input.GetKey(KeyCode.Y))
-        {
-            movement.x *= -moveSpeed;
-        }
+        movement.Set(moveSpeed*Input.GetAxis("Vertical"),0,0);
+        rotateMovement.y = rotateSpeed * Input.GetAxis("Horizontal");
+        controller.transform.Rotate(rotateMovement*Time.deltaTime);
+        movement = controller.transform.TransformDirection(movement);
         
-        if (Input.GetButtonDown("Jump"))
-        {
-            movement.y = jumpForce;
-        }
-
-        if (controller.isGrounded)
-        {
-            movement.y = 0;
-        }
-        else
-        {
-            movement.y -= gravity;
-        }
-
-        movement = transform.TransformDirection(movement);
         controller.Move(movement*Time.deltaTime);
     }
 }
