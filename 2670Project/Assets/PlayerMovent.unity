@@ -339,13 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add91726641d144ca81f7778178a9417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
+  rotateSpeed: 120
   gravity: -9.81
-  moveSpeed: 12
-  fastMoveSpeed: 0
-  jumpForce: 0.5
-  jumpCountMax: 2
-  jumpCount: 0
-  rotateSpeed: 50
+  jumpForce: 5
+  jumpCountMax: 0
 --- !u!143 &1172660278
 CharacterController:
   m_ObjectHideFlags: 0
