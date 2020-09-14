@@ -22,6 +22,8 @@ public class CharacterMover : MonoBehaviour
     {
         moveSpeed = normalSpeed;
         controller = GetComponent<CharacterController>();
+        
+        
     }
 
     private void Update()
@@ -64,6 +66,6 @@ public class CharacterMover : MonoBehaviour
 
     private void OnEnable()
     {
-        //set the position of the player to the location data of the player
+        transform.position = currentSpawnPoint.value;
     }
 }
