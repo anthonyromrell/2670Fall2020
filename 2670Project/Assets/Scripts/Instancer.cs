@@ -5,7 +5,7 @@ public class Instancer : MonoBehaviour
 {
     public GameObject prefab;
     
-    //Make a method to call the Instance Method
+    
     
     public void Instance()
     {
