@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InstancerBehaviour : MonoBehaviour
 {
@@ -10,7 +9,5 @@ public class InstancerBehaviour : MonoBehaviour
     {
         var location = transform.position;
         var newObj = Instantiate(prefab, location, Quaternion.Euler(rotationDirection.value));
-        print(rotationDirection.value);
-        print(newObj.transform.eulerAngles);
     }
 }
