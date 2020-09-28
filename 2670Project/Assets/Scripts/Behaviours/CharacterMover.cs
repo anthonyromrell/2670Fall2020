@@ -15,15 +15,12 @@ public class CharacterMover : MonoBehaviour
     
     public IntData playerJumpCount;
     private int jumpCount;
-
-    public Vector3Data currentSpawnPoint;
+    
     
     private void Start()
     {
         moveSpeed = normalSpeed;
         controller = GetComponent<CharacterController>();
-        
-        
     }
 
     private void Update()
@@ -62,10 +59,5 @@ public class CharacterMover : MonoBehaviour
         
         movement = transform.TransformDirection(movement);
         controller.Move(movement * Time.deltaTime);
-    }
-
-    private void OnEnable()
-    {
-        transform.position = currentSpawnPoint.value;
     }
 }

@@ -16,6 +16,11 @@ public class Vector3Data : ScriptableObject
     {
         value = obj.position;
     }
+    
+    public void SetPositionFromValue(Transform obj)
+    {
+        obj.position = value;
+    }
 
     public void SetValueFromRotation(Transform obj)
     {

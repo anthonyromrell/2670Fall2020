@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fb1516ec3f44eeca7ba5219c2a7674, type: 3}
-  m_Name: NormalSpeed
+  m_Script: {fileID: 11500000, guid: 342949947a3e34ceeaf02183d7c90798, type: 3}
+  m_Name: SpawnPoint1
   m_EditorClassIdentifier: 
-  value: 5
+  value: {x: 0, y: 1, z: 0}
