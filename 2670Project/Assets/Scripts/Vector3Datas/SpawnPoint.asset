@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 342949947a3e34ceeaf02183d7c90798, type: 3}
-  m_Name: SpawnPoint1
+  m_Name: SpawnPoint
   m_EditorClassIdentifier: 
-  value: {x: 0, y: 1, z: 0}
+  value: {x: 12.44, y: 1.24, z: 0}
