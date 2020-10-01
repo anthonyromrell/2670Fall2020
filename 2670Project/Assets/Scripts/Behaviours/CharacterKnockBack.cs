@@ -1,32 +1,27 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterKnockBack : MonoBehaviour
 {
-    //Direction of the hit
+    private CharacterController controller;
 
-    public CharacterController controller;
-    public Vector3 knockBackVector;
-    public float knockBackForce = 50f;
-    private float tempForce;
-    private void Start()
+    Vector3 move = Vector3.left;
+    void Update()
     {
-        tempForce = knockBackForce;
+        controller = GetComponent<CharacterController>();
+        controller.Move(move*Time.deltaTime);
     }
-
-    private IEnumerator OnCollisionEnter(Collision other)
+    
+    private IEnumerator OnTriggerEnter(Collider other)
     {
-        if ((controller.collisionFlags & CollisionFlags.Sides) != 0)
+        var i = 2f;
+        move = other.attachedRigidbody.velocity*i;
+        while (i > 0)
         {
-            print("side hit");
+            yield return new WaitForFixedUpdate();
+            i -= 0.1f;
         }
-        knockBackForce = tempForce;
-        while (knockBackForce > 0)
-        {
-            knockBackVector.x = knockBackForce*Time.deltaTime;
-            controller.Move(knockBackVector);
-            knockBackForce -= 0.1f;
-            yield return new  WaitForFixedUpdate();
-        }
+        move = Vector3.left;
     }
 }
