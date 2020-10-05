@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -15,8 +15,7 @@ public class CharacterMover : MonoBehaviour
     
     public IntData playerJumpCount;
     private int jumpCount;
-    
-    
+
     private void Start()
     {
         moveSpeed = normalSpeed;
@@ -25,7 +24,6 @@ public class CharacterMover : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             moveSpeed = fastSpeed;
@@ -37,11 +35,11 @@ public class CharacterMover : MonoBehaviour
         }
         
         var vInput = Input.GetAxis("Vertical")*moveSpeed.value;
-        movement.Set(vInput,yVar,0);
+        var hInput = Input.GetAxis("Horizontal")*moveSpeed.value;
+        movement.Set(hInput,yVar,vInput);
         
-        
-        var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
-        transform.Rotate(0,hInput,0);
+        // var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
+        // transform.Rotate(0,hInput,0);
 
         yVar += gravity*Time.deltaTime;
 
@@ -58,6 +56,43 @@ public class CharacterMover : MonoBehaviour
         }
         
         movement = transform.TransformDirection(movement);
-        controller.Move(movement * Time.deltaTime);
+        controller.Move((movement + knockBackMovement) * Time.deltaTime);
+    }
+
+    public float playerKnockBackForce = 10f;
+    private Vector3 knockBackMovement;
+    private IEnumerator KnockBack (ControllerColliderHit hit)
+    {
+        var i = 2f;
+        knockBackMovement = hit.collider.attachedRigidbody.velocity * (i * playerKnockBackForce);
+        while (i > 0)
+        {
+            yield return new WaitForFixedUpdate();
+            i -= 0.1f;
+        }
+    }
+    
+    public float pushPower = 10.0f;
+    private CharacterController characterController;
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var body = hit.collider.attachedRigidbody;
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+
+        if (hit.moveDirection.y < -0.3)
+        {
+            return;
+        }
+        
+        StartCoroutine(KnockBack(hit));
+        
+        var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        var forces = pushDir * pushPower;
+        body.AddRelativeForce(forces);
+        body.AddTorque(forces);
     }
 }
