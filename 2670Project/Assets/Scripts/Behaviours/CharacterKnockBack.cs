@@ -6,27 +6,27 @@ public class CharacterKnockBack : MonoBehaviour
 {
     private CharacterController controller;
 
-    Vector3 move = Vector3.zero;
+    Vector3 movement = Vector3.zero;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
     }
-
+    
     private IEnumerator KnockBack (ControllerColliderHit hit)
     {
         var i = 2f;
-        move = hit.collider.attachedRigidbody.velocity*i;
+        movement = hit.collider.attachedRigidbody.velocity*i;
         while (i > 0)
         {
             yield return new WaitForFixedUpdate();
             i -= 0.1f;
+            controller.Move(movement);
         }
-        move = Vector3.zero;
+        movement = Vector3.zero;
     }
     
     public float pushPower = 10.0f;
-    private CharacterController characterController;
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -45,7 +45,6 @@ public class CharacterKnockBack : MonoBehaviour
         
         var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         var forces = pushDir * pushPower;
-        body.AddRelativeForce(forces);
-        body.AddTorque(forces);
+        body.velocity = forces;
     }
 }

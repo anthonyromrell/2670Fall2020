@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 368731800}
   - component: {fileID: 368731799}
   - component: {fileID: 368731803}
+  - component: {fileID: 368731804}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -231,6 +232,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!59 &368731804
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368731798}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 1, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 4.58, y: 2.12, z: -2.29}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &550638241
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,13 +299,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add91726641d144ca81f7778178a9417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 30
+  rotateSpeed: 90
   gravity: -9.81
   jumpForce: 10
   normalSpeed: {fileID: 11400000, guid: 13715554da85c4164854e95e863de58f, type: 2}
   fastSpeed: {fileID: 11400000, guid: c5581336aa57342ec8206bf53869eac7, type: 2}
   playerJumpCount: {fileID: 11400000, guid: 89f5a79b0e9f646919e92aaadee1ebe0, type: 2}
-  pushPower: 10
+  pushPower: 20
 --- !u!143 &550638243
 CharacterController:
   m_ObjectHideFlags: 0
@@ -638,7 +674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &2019382502
 Rigidbody:
   m_ObjectHideFlags: 0
