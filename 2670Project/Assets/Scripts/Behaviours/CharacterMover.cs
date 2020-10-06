@@ -12,6 +12,7 @@ public class CharacterMover : MonoBehaviour
 
     public FloatData normalSpeed, fastSpeed;
     private FloatData moveSpeed;
+    private bool canMove = true;
     
     public IntData playerJumpCount;
     private int jumpCount;
@@ -20,56 +21,64 @@ public class CharacterMover : MonoBehaviour
     {
         moveSpeed = normalSpeed;
         controller = GetComponent<CharacterController>();
+        StartCoroutine(Move());
     }
 
-    private void Update()
+    private readonly WaitForFixedUpdate wffu = new WaitForFixedUpdate();
+    private IEnumerator Move()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        canMove = true;
+        while (canMove)
         {
-            moveSpeed = fastSpeed;
-        }
+            yield return wffu;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                moveSpeed = fastSpeed;
+            }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            moveSpeed = normalSpeed;
-        }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                moveSpeed = normalSpeed;
+            }
         
-        var vInput = Input.GetAxis("Vertical")*moveSpeed.value;
-        var hInput = Input.GetAxis("Horizontal")*moveSpeed.value;
-        movement.Set(hInput,yVar,vInput);
+            var vInput = Input.GetAxis("Vertical")*moveSpeed.value;
+            //var hInput = Input.GetAxis("Horizontal")*moveSpeed.value;
+            movement.Set(vInput,yVar,0);
         
-        // var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
-        // transform.Rotate(0,hInput,0);
+            var hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
+            transform.Rotate(0,hInput,0);
 
-        yVar += gravity*Time.deltaTime;
+            yVar += gravity*Time.deltaTime;
 
-        if (controller.isGrounded && movement.y < 0)
-        {
-            yVar = -1f;
-            jumpCount = 0;
-        }
+            if (controller.isGrounded && movement.y < 0)
+            {
+                yVar = -1f;
+                jumpCount = 0;
+            }
 
-        if (Input.GetButtonDown("Jump") && jumpCount < playerJumpCount.value)
-        {
-            yVar = jumpForce;
-            jumpCount++;
-        }
+            if (Input.GetButtonDown("Jump") && jumpCount < playerJumpCount.value)
+            {
+                yVar = jumpForce;
+                jumpCount++;
+            }
         
-        movement = transform.TransformDirection(movement);
-        controller.Move((movement + knockBackMovement) * Time.deltaTime);
+            movement = transform.TransformDirection(movement);
+            controller.Move((movement) * Time.deltaTime);
+        }
     }
-
-    public float playerKnockBackForce = 10f;
-    private Vector3 knockBackMovement;
     private IEnumerator KnockBack (ControllerColliderHit hit)
     {
+        canMove = false;
         var i = 2f;
-        knockBackMovement = hit.collider.attachedRigidbody.velocity * (i * playerKnockBackForce);
+        movement = hit.collider.attachedRigidbody.velocity * i;
         while (i > 0)
         {
             yield return new WaitForFixedUpdate();
             i -= 0.1f;
+            controller.Move((movement) * Time.deltaTime);
         }
+        movement = Vector3.zero;
+        StartCoroutine(Move());
     }
     
     public float pushPower = 10.0f;
@@ -88,11 +97,10 @@ public class CharacterMover : MonoBehaviour
             return;
         }
         
-        StartCoroutine(KnockBack(hit));
-        
         var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         var forces = pushDir * pushPower;
-        body.AddRelativeForce(forces);
-        body.AddTorque(forces);
+        //body.AddForce(forces);
+        body.velocity = forces;
+        //StartCoroutine(KnockBack(hit));
     }
 }
