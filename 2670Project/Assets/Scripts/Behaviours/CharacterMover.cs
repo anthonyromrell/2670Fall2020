@@ -70,7 +70,7 @@ public class CharacterMover : MonoBehaviour
     {
         canMove = false;
         var i = 2f;
-        //movement = hit.collider.attachedRigidbody.velocity * i;
+       
         movement = -hit.moveDirection;
         movement.y = -1;
         while (i > 0)
