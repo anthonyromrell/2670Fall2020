@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81ec7f129b0e4303b7b472677b7e445, type: 3}
   m_Name: PlayerJumpCount
   m_EditorClassIdentifier: 
-  value: 0
+  value: 2
