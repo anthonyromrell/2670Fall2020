@@ -33,6 +33,7 @@ public class AIBehaviour : MonoBehaviour
         }
         else
         {
+            //this will be for patrolling
             //StartCoroutine(Patrol());
         }
     }
