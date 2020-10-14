@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,15 +10,17 @@ public class AIBehaviour : MonoBehaviour
     private NavMeshAgent agent;
     public Transform player;
     private bool canHunt, canPatrol;
+    public List<Transform> patrolPoints;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //StartCoroutine(Patrol());
+        StartCoroutine(Patrol());
     }
 
     private IEnumerator OnTriggerEnter(Collider other)
     {
         canHunt = true;
+        canPatrol = false;
         agent.destination = player.position;
         var distance = agent.remainingDistance;
         while (distance <= 0.25f)
@@ -26,19 +29,25 @@ public class AIBehaviour : MonoBehaviour
             yield return wffu;
         }
         yield return new WaitForSeconds(2f);
-        
-        if (canHunt)
-        {
-            StartCoroutine(OnTriggerEnter(other));
-        }
-        else
-        {
-            //this will be for patrolling
-            //StartCoroutine(Patrol());
-        }
+
+        StartCoroutine(canHunt ? OnTriggerEnter(other) : Patrol());
     }
     private void OnTriggerExit(Collider other)
     {
         canHunt = false;
+        //StartCoroutine(Patrol());
+    }
+    
+    private int i = 0;
+    private IEnumerator Patrol()
+    {
+        canPatrol = true;
+        while (canPatrol)
+        {
+            yield return wffu;
+            if (agent.pathPending || !(agent.remainingDistance < 0.5f)) continue;
+            agent.destination = patrolPoints[i].position;
+            i = (i + 1) % patrolPoints.Count;
+        }
     }
 }
