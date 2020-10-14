@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterBehaviour : MonoBehaviour
 {
-    public float rotateSpeed = 30f, gravity = -9.81f, jumpForce = 10f;
+    public float rotateSpeed = 120f, gravity = -9.81f, jumpForce = 10f;
     public FloatData normalSpeed, fastSpeed;
     public IntData playerJumpCount;
     
@@ -32,6 +32,7 @@ public class CharacterBehaviour : MonoBehaviour
         {
             OnHorizontal();
             OnVertical();
+            OnMove();
             yield return wffu;
         }
     }
@@ -42,7 +43,12 @@ public class CharacterBehaviour : MonoBehaviour
         transform.Rotate(0,hInput,0);
     }
 
-    private void OnVertical()
+    protected virtual void OnVertical()
+    {
+        vInput = Input.GetAxis("Vertical")*moveSpeed.value;
+    }
+
+    private void OnMove()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -53,10 +59,7 @@ public class CharacterBehaviour : MonoBehaviour
         {
             moveSpeed = normalSpeed;
         }
-        
-        vInput = Input.GetAxis("Vertical")*moveSpeed.value;
-        movement.Set(vInput,yVar,hInput);
-            
+
         yVar += gravity*Time.deltaTime;
 
         if (controller.isGrounded && movement.y < 0)
@@ -70,6 +73,8 @@ public class CharacterBehaviour : MonoBehaviour
             yVar = jumpForce;
             jumpCount++;
         }
+        
+        movement.Set(vInput,yVar,hInput);
         movement = transform.TransformDirection(movement);
         controller.Move((movement) * Time.deltaTime);
     }
