@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fb1516ec3f44eeca7ba5219c2a7674, type: 3}
   m_Name: PlayerHealth
   m_EditorClassIdentifier: 
-  value: 0.9
+  value: 1
+  lessThanZeroEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 09623e0db49cf4e54a6601be3912941e, type: 2}
+        m_MethodName: OnDebug
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Died
+          m_BoolArgument: 0
+        m_CallState: 2
