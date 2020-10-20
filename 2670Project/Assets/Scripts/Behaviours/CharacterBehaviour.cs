@@ -15,7 +15,7 @@ public class CharacterBehaviour : MonoBehaviour
     protected float vInput, hInput;
     protected FloatData moveSpeed;
     
-    private float yVar;
+    protected float yVar;
     private int jumpCount;
 
     private void Start()
@@ -30,8 +30,6 @@ public class CharacterBehaviour : MonoBehaviour
         canMove = true;
         while (canMove)
         {
-            OnHorizontal();
-            OnVertical();
             OnMove();
             yield return wffu;
         }
@@ -46,6 +44,7 @@ public class CharacterBehaviour : MonoBehaviour
     protected virtual void OnVertical()
     {
         vInput = Input.GetAxis("Vertical")*moveSpeed.value;
+        movement.Set(vInput,yVar,0);
     }
 
     private void OnMove()
@@ -59,6 +58,9 @@ public class CharacterBehaviour : MonoBehaviour
         {
             moveSpeed = normalSpeed;
         }
+        
+        OnVertical();
+        OnHorizontal();
 
         yVar += gravity*Time.deltaTime;
 
@@ -74,7 +76,6 @@ public class CharacterBehaviour : MonoBehaviour
             jumpCount++;
         }
         
-        movement.Set(vInput,yVar,hInput);
         movement = transform.TransformDirection(movement);
         controller.Move((movement) * Time.deltaTime);
     }
