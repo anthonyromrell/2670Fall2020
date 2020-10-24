@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterBehaviour : MonoBehaviour
 {
+    public UnityEvent onDeathEvent;
+    public FloatData playerHealth;
+    
     public float rotateSpeed = 120f, gravity = -9.81f, jumpForce = 10f;
     public FloatData normalSpeed, fastSpeed;
     public IntData playerJumpCount;
@@ -18,11 +23,16 @@ public class CharacterBehaviour : MonoBehaviour
     protected float yVar;
     private int jumpCount;
 
-    private void Start()
+    private void OnEnable()
     {
         moveSpeed = normalSpeed;
         controller = GetComponent<CharacterController>();
         StartCoroutine(Move());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     protected IEnumerator Move()
@@ -34,7 +44,7 @@ public class CharacterBehaviour : MonoBehaviour
             yield return wffu;
         }
     }
-
+    
     protected virtual void OnHorizontal()
     {
         hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
@@ -49,6 +59,12 @@ public class CharacterBehaviour : MonoBehaviour
 
     private void OnMove()
     {
+        if (playerHealth.value <= 0)
+        {
+            onDeathEvent.Invoke();
+        }
+        
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             moveSpeed = fastSpeed;
