@@ -224,7 +224,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  holdTime: 0.0001
+  holdTime: 0
 --- !u!114 &187695559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,43 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e239d135753145cb8755729b7f2cdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDeathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnInvoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
-        m_MethodName: SetImageFillAmount
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 187695555}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 564060844}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  playerHealth: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
   rotateSpeed: 120
   gravity: -9.81
   jumpForce: 10
@@ -440,15 +403,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 564060844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4e1a6c6f11e487f992da355172eb02, type: 3}
+  m_Script: {fileID: 11500000, guid: 06939cb7f2159403bb454aaf0e63a976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerEnterEvent:
+  gameAction: {fileID: 11400000, guid: 7ba3d5aa2634e4dde950a9b4304f34a7, type: 2}
+  handlerEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 829fc411211ef427782b25ade74e30fa, type: 2}
-        m_MethodName: Raise
-        m_Mode: 1
+      - m_Target: {fileID: 564060844}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -457,10 +421,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  triggerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  delayTime: 0
+  holdTime: 0
 --- !u!23 &564060847
 MeshRenderer:
   m_ObjectHideFlags: 0

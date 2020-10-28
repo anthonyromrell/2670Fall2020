@@ -6,9 +6,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterBehaviour : MonoBehaviour
 {
-    public UnityEvent onDeathEvent;
-    public FloatData playerHealth;
-    
     public float rotateSpeed = 120f, gravity = -9.81f, jumpForce = 10f;
     public FloatData normalSpeed, fastSpeed;
     public IntData playerJumpCount;
@@ -59,12 +56,6 @@ public class CharacterBehaviour : MonoBehaviour
 
     private void OnMove()
     {
-        if (playerHealth.value <= 0)
-        {
-            onDeathEvent.Invoke();
-        }
-        
-        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             moveSpeed = fastSpeed;
