@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fb1516ec3f44eeca7ba5219c2a7674, type: 3}
   m_Name: PlayerHealth
   m_EditorClassIdentifier: 
-  value: 1
+  value: 0
   lessThanZeroEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 09623e0db49cf4e54a6601be3912941e, type: 2}
-        m_MethodName: OnDebug
-        m_Mode: 5
+      - m_Target: {fileID: 11400000, guid: 7ba3d5aa2634e4dde950a9b4304f34a7, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

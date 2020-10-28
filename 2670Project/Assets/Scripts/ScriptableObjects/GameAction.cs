@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class GameAction : MonoBehaviour
+[CreateAssetMenu]
+public class GameAction : ScriptableObject
 {
     public UnityAction action;
-
     public void Raise()
     {
         action?.Invoke();

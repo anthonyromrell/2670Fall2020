@@ -7,4 +7,4 @@ public class Debugger : ScriptableObject
     {
         Debug.Log(obj);
     }
-}
+}  

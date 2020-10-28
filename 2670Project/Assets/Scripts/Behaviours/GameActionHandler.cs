@@ -1,18 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class GameActionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameAction gameAction;
+    public UnityEvent handlerEvent;
+    public float holdTime = 3f;
+    private void Start()
     {
-        
+        gameAction.action += ActionHandler;  
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ActionHandler()
     {
-        
+        Invoke(nameof(OnActionHandler), holdTime);
+    }
+
+    private void OnActionHandler()
+    {
+        handlerEvent.Invoke();
     }
 }
