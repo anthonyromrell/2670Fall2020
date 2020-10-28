@@ -15,7 +15,7 @@ public class GameActionHandler : MonoBehaviour
     {
         Invoke(nameof(OnActionHandler), holdTime);
     }
-
+    
     private void OnActionHandler()
     {
         handlerEvent.Invoke();

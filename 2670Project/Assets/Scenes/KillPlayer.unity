@@ -242,17 +242,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
-        m_MethodName: UpdateValue
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
         m_MethodName: SetImageFillAmount
         m_Mode: 2
         m_Arguments:
@@ -471,7 +460,7 @@ MonoBehaviour:
   triggerExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  delayTime: 0.0001
+  delayTime: 0
 --- !u!23 &564060847
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -563,10 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4e7e7d36a8a42ea832e4c2d8f63b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableEvent:
+  awakeEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
@@ -580,7 +566,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  holdTime: 0.0001
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  holdTime: 0
   repeatOnStart: 0
 --- !u!114 &564060852
 MonoBehaviour:
@@ -709,6 +704,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4e7e7d36a8a42ea832e4c2d8f63b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  awakeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   startEvent:
     m_PersistentCalls:
       m_Calls:
@@ -724,6 +722,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onEnableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableEvent:
     m_PersistentCalls:
       m_Calls: []
   holdTime: 0.5
@@ -799,8 +800,8 @@ MonoBehaviour:
   handlerEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 795147308}
-        m_MethodName: Instance
+      - m_Target: {fileID: 795147306}
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -810,7 +811,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  holdTime: 6
+  holdTime: 4
 --- !u!1 &948727501
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +841,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4e7e7d36a8a42ea832e4c2d8f63b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  awakeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   startEvent:
     m_PersistentCalls:
       m_Calls:
@@ -855,6 +859,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onEnableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableEvent:
     m_PersistentCalls:
       m_Calls: []
   holdTime: 1

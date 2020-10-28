@@ -28,7 +28,6 @@ public class FloatData : ScriptableObject
         if (value <= 0)
         {
             lessThanZeroEvent.Invoke();
-            value = 0;
         }
 
         if (value >= 1)
