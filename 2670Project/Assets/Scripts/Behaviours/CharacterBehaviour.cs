@@ -47,13 +47,13 @@ public class CharacterBehaviour : MonoBehaviour
     
     protected virtual void OnHorizontal()
     {
-        hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
+        //hInput = Input.GetAxis("Horizontal")*Time.deltaTime*rotateSpeed;
         transform.Rotate(0,hInput,0);
     }
 
     protected virtual void OnVertical()
     {
-        vInput = Input.GetAxis("Vertical")*moveSpeed.value;
+        vInput = Input.GetAxis("Horizontal")*moveSpeed.value;
         movement.Set(vInput,yVar,0);
     }
 
