@@ -5,15 +5,7 @@ public class GameActionHandler : MonoBehaviour
 {
     public GameAction gameAction;
     public UnityEvent handlerEvent;
-    public float holdTime = 3f;
-    public bool stopHandling;
-
-    public bool StopHandling
-    {
-        get => stopHandling;
-        set => stopHandling = value;
-    }
-
+    public float holdTime;
     private void Start()
     {
         gameAction.action += ActionHandler;  
@@ -25,8 +17,6 @@ public class GameActionHandler : MonoBehaviour
     
     private void OnActionHandler()
     {
-        if (StopHandling) return;
-        
         handlerEvent.Invoke();
     }
 }
