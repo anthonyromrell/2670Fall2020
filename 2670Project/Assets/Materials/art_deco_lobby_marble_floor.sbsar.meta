@@ -18,7 +18,10 @@ ScriptedImporter:
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://art_deco_lobby_marble_floor\" label=\"\"
       >\n  <presetinput identifier=\"$outputsize\" uid=\"3284856775\" type=\"8\"
-      value=\"9,9\" />\n </sbspreset>\n"
+      value=\"9,9\" />\n  <presetinput identifier=\"rectangle_pattern_size\" uid=\"2848574228\"
+      type=\"1\" value=\"0.16,1\" />\n  <presetinput identifier=\"checker_pattern_tiling\"
+      uid=\"2849420617\" type=\"4\" value=\"3\" />\n  <presetinput identifier=\"luminosity\"
+      uid=\"3331741308\" type=\"0\" value=\"0.58\" />\n </sbspreset>\n"
     shaderName: Standard
     materialProperties:
       shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
@@ -47,12 +50,12 @@ ScriptedImporter:
         offset: {x: 0, y: 0}
       - name: _EmissionMap
         texture: {instanceID: 0}
-        scale: {x: 1, y: 1}
+        scale: {x: 2, y: 2}
         offset: {x: 0, y: 0}
       - name: _MainTex
         texture: {fileID: -938957444699948490, guid: 79aeac7ad8cd24ddd8408d555bd004f4,
           type: 3}
-        scale: {x: 1, y: 1}
+        scale: {x: 2, y: 2}
         offset: {x: 0, y: 0}
       - name: _MetallicGlossMap
         texture: {fileID: -7189429593865391434, guid: 79aeac7ad8cd24ddd8408d555bd004f4,
@@ -91,7 +94,7 @@ ScriptedImporter:
       - name: _OcclusionStrength
         float: 1
       - name: _Parallax
-        float: 0.02
+        float: 0.08
       - name: _SmoothnessTextureChannel
         float: 0
       - name: _SpecularHighlights

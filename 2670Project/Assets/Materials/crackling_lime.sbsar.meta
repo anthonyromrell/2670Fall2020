@@ -17,8 +17,12 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://crackling_lime\" label=\"\" >\n  <presetinput
-      identifier=\"$outputsize\" uid=\"3498033767\" type=\"8\" value=\"9,9\" />\n
-      </sbspreset>\n"
+      identifier=\"$outputsize\" uid=\"3498033767\" type=\"8\" value=\"9,9\" />\n 
+      <presetinput identifier=\"$randomseed\" uid=\"2265830453\" type=\"4\" value=\"9366\"
+      />\n  <presetinput identifier=\"peeling_amount\" uid=\"2776156385\" type=\"0\"
+      value=\"0.1\" />\n  <presetinput identifier=\"surface_adhesion\" uid=\"3132953464\"
+      type=\"0\" value=\"1\" />\n  <presetinput identifier=\"crack_definition\" uid=\"3132951074\"
+      type=\"0\" value=\"1\" />\n </sbspreset>\n"
     shaderName: Standard
     materialProperties:
       shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
