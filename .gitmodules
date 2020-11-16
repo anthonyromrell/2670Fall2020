@@ -1,0 +1,3 @@
+[submodule "2670Project/Assets/NavMeshComps"]
+	path = 2670Project/Assets/NavMeshComps
+	url = https://github.com/Unity-Technologies/NavMeshComponents
