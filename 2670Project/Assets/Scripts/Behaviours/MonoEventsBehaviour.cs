@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class MonoEventsBehaviour : MonoBehaviour
 {
        public UnityEvent awakeEvent, startEvent, onEnableEvent, onDisableEvent;
-       public float holdTime = 1f;
+       public float holdTime = 0f;
        public bool repeatOnStart;
 
        private void Awake()
