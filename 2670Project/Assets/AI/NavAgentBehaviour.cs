@@ -15,20 +15,20 @@ public class NavAgentBehaviour : MonoBehaviour
         callForTransformAction.action?.Invoke();
     }
 
-    private void HandleTransform(Transform obj)
+    public void HandleTransform(Transform obj)
     {
         destination = obj;
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        destination = other.transform;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        destination = transform;
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     destination = other.transform;
+    // }
+    //
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     destination = transform;
+    // }
 
     private void Update()
     {
