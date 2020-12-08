@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
@@ -8,28 +9,24 @@ public class ImageBehaviour : MonoBehaviour
 {
     private Image img;
     public FloatData data;
-    private float tempValue;
+    public UnityEvent fillAmountZeroEvent;
     private void Start()
     {
         img = GetComponent<Image>();
-        tempValue = data.value;
     }
 
     public void UpdateFillAmount()
     {
-        StartCoroutine(OnUpdateFillAmount());
+        StopAllCoroutines();
+        //StartCoroutine(OnUpdateFillAmount());
     }
     
-    private IEnumerator OnUpdateFillAmount()
+    private IEnumerator OnUpdateFillAmount(float change)
     {
-        while (tempValue > data.value)
+        while (img.fillAmount >= data.value)
         {
-            img.fillAmount = tempValue;
+            img.fillAmount += change;
             yield return new WaitForFixedUpdate();
-            tempValue -= 0.01f;
         }
-        
-        tempValue = data.value;
-        
     }
 }

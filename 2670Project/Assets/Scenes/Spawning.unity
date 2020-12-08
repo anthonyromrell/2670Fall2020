@@ -363,6 +363,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
+  fillAmountZeroEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7ba3d5aa2634e4dde950a9b4304f34a7, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &215182217
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,17 +632,6 @@ MonoBehaviour:
   onEnableEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: e64b3bfdeef6f41309e5d601d18efdb6, type: 2}
-        m_MethodName: SetPositionFromValue
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 564060849}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
         m_MethodName: SetValue
         m_Mode: 4
@@ -723,28 +726,6 @@ MonoBehaviour:
       - m_Target: {fileID: 564060844}
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: f5fabdfe9a2df46018a8ff465a970d9f, type: 2}
-        m_MethodName: SetValue
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 829fc411211ef427782b25ade74e30fa, type: 2}
-        m_MethodName: Raise
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
